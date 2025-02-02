@@ -24,3 +24,9 @@ variable "germanywestcentral_location" {
   type        = string
   default     = "germanywestcentral"
 }
+
+variable "northeurope_location" {
+  description = "The location for the resources"
+  type        = string
+  default     = "northeurope"
+}
