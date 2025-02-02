@@ -34,16 +34,16 @@ resource "azurerm_storage_account" "frontend_replicas" {
   })
 }
 
-resource "azurerm_storage_account_static_website" "test" {
-  count              = length(local.sa.frontend.replicas)
-  storage_account_id = azurerm_storage_account.frontend_replicas[count.index].id
-  error_404_document = "index.html"
-  index_document     = "index.html"
-}
-
 resource "azurerm_storage_container" "frontend_replicas" {
   count                 = length(local.sa.frontend.replicas)
   name                  = "$web"
   storage_account_id    = azurerm_storage_account.frontend_replicas[count.index].id
   container_access_type = "blob"
+}
+
+resource "azurerm_storage_account_static_website" "test" {
+  count              = length(local.sa.frontend.replicas)
+  storage_account_id = azurerm_storage_account.frontend_replicas[count.index].id
+  error_404_document = "index.html"
+  index_document     = "index.html"
 }
