@@ -3,8 +3,11 @@ name: Deploy React App to Azure Static Website
 on:
   push:
     branches:
+      - dev
+  pull_request:
+    branches:
+      - qa
       - main
-      - staging
 
 jobs:
   build-and-deploy:
