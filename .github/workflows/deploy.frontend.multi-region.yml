@@ -1,13 +1,15 @@
-name: Deploy React App to Azure Static Website
+name: Deploy React App to Multi-Region Azure Storage Accounts
 
 on:
   push:
     branches:
-      - dev
+      - ignore
+      # - dev
   pull_request:
     branches:
-      - qa
-      - main
+      - ignore
+      # - qa
+      # - main
 
 jobs:
   build-and-deploy:
